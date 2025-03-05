@@ -1,7 +1,3 @@
-.markdown-content {
-    font-family: 'Patrick Hand', cursive;
-}
-
 <div class="markdown-content">
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum molestie elementum erat. Suspendisse sit amet mi sit amet justo porttitor posuere eu a purus. Praesent eu dignissim odio. Nulla vel vulputate velit, a fringilla felis. Morbi nec euismod sapien. Proin a consectetur velit. In non augue laoreet, eleifend est ut, auctor erat. Fusce ex velit, consectetur in turpis in, commodo cursus arcu.
 
