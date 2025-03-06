@@ -1,4 +1,4 @@
-# 💫 About Me:
+# 💫 Góc fônt bạth:
 🎓 Nguyễn Quý Đức, IT-E6 K68 HUST, Hà Nội<br>
 🎮 Cờ vua, lập trình, Photoshop, LoL<br>
 🛠 Đang tìm hiểu hệ nhúng<br>
