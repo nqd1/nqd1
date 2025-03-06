@@ -36,5 +36,7 @@
 ![](https://github-readme-stats.vercel.app/api/top-langs/?username=nqd1&theme=transparent&hide_border=false&include_all_commits=true&count_private=true&layout=donut)
 
 
+# 💬 Favourite quote:
+> _"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacinia tincidunt finibus. Nam at felis vel erat molestie viverra ut a ante. Donec tincidunt, erat ut congue porta, ex tortor egestas mi, vel mollis augue mi eget velit."_ - John Ligma 
 
 
