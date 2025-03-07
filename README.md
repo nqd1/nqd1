@@ -32,7 +32,7 @@
 ![AssemblyScript](https://img.shields.io/badge/assembly%20script-%23000000.svg?style=for-the-badge&logo=assemblyscript&logoColor=white)
 # 📊 GitHub Stats:
 ![](https://github-readme-stats.vercel.app/api?username=nqd1&theme=transparent&hide_border=false&include_all_commits=true&count_private=true)<br/>
-![](https://nirzak-streak-stats.vercel.app/?user=nqd1&theme=transparent&hide_border=false)<br/>
+![](https://nirzak-streak-stats.vercel.app/?user=nqd1&theme=transparent&hide_border=false&hide_rank=true)<br/>
 ![](https://github-readme-stats.vercel.app/api/top-langs/?username=nqd1&theme=transparent&hide_border=false&include_all_commits=true&count_private=true&layout=donut)
 
 
