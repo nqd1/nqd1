@@ -4,7 +4,7 @@
 🛠 Đang tìm hiểu hệ nhúng<br>
 🎵 Nghe mọi thể loại nhạc<br>
 🍵 Yêu trà<br>
-🌍 Tiếng Việt, English, 日本語  
+🌍 Tiếng Việt, English, 日本語, 中国語？
 
 
 
