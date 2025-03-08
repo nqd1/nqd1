@@ -33,7 +33,7 @@
 # 📊 GitHub Stats:
 ![](https://github-readme-stats.vercel.app/api?username=nqd1&theme=transparent&hide_border=false&include_all_commits=true&count_private=true)<br/>
 ![](https://nirzak-streak-stats.vercel.app/?user=nqd1&theme=transparent&hide_border=false&hide_rank=true)<br/>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=nqd1&theme=transparent&hide_border=false&include_all_commits=true&count_private=true&layout=donut)
+![](https://github-readme-stats.vercel.app/api/top-langs/?username=nqd1&theme=transparent&hide_border=false&include_all_commits=true&count_private=true)
 
 
 # 💬 Favourite quote:
