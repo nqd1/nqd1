@@ -1,9 +1,9 @@
 # 💫About me:
 🎓 Nguyễn Quý Đức, IT-E6 K68 HUST, Hà Nội<br>
-🎮 Cờ vua, lập trình, Photoshop, LoL<br>
-🛠 Đang tìm hiểu hệ nhúng<br>
-🎵 Nghe mọi thể loại nhạc<br>
-🍵 Yêu trà<br>
+🎮 Chess, coding, Photoshop, LoL<br>
+🛠 Having interest in embeded system <br>
+🎵 Jpop, Vpop, rock<br>
+🍵 Tea lover <br>
 🌍 Tiếng Việt, English, 日本語, 中国語？
 
 
