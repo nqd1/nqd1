@@ -37,7 +37,7 @@
 # 📊 GitHub Stats:
 ![](https://github-readme-stats.vercel.app/api?username=nqd1&theme=transparent&hide_border=false&include_all_commits=true&count_private=true)<br/>
 ![](https://nirzak-streak-stats.vercel.app/?user=nqd1&theme=transparent&hide_border=false)<br/>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=nqd1&theme=transparent&hide_border=false&include_all_commits=true&count_private=true&lang_count=20&layout=donut-vertical&langs_count=10) <!--layout=donut hasnt updated yet-->
+![](https://github-readme-stats.vercel.app/api/top-langs/?username=nqd1&theme=transparent&hide_border=false&include_all_commits=true&count_private=true&lang_count=20&layout=donut&langs_count=12) <!--layout=donut hasnt updated yet-->
 
 
 
