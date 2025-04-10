@@ -16,6 +16,13 @@
   <img src="https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white" alt="Email">
 </a>
 
+# 📊 GitHub Stats:
+![](https://github-readme-activity-graph.vercel.app/graph?username=nqd1&theme=react-dark&days=40)
+![](https://github-readme-stats.vercel.app/api?username=nqd1&theme=transparent&hide_border=false&include_all_commits=true&count_private=true)<br/>
+![](https://nirzak-streak-stats.vercel.app/?user=nqd1&theme=transparent&hide_border=false)<br/>
+![](https://github-readme-stats.vercel.app/api/top-langs/?username=nqd1&theme=transparent&hide_border=false&include_all_commits=true&count_private=true&lang_count=20&layout=donut&langs_count=12) <!--layout=donut hasnt updated yet--><br/>
+
+
 
 # 💻 Tech Stack:
 ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white) 
@@ -38,11 +45,6 @@
 ![Arduino](https://img.shields.io/badge/-Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white) 
 ![AssemblyScript](https://img.shields.io/badge/assembly%20script-%23000000.svg?style=for-the-badge&logo=assemblyscript&logoColor=white)
 
-# 📊 GitHub Stats:
-![](https://github-readme-stats.vercel.app/api?username=nqd1&theme=transparent&hide_border=false&include_all_commits=true&count_private=true)<br/>
-![](https://nirzak-streak-stats.vercel.app/?user=nqd1&theme=transparent&hide_border=false)<br/>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=nqd1&theme=transparent&hide_border=false&include_all_commits=true&count_private=true&lang_count=20&layout=donut&langs_count=12) <!--layout=donut hasnt updated yet--><br/>
-[![](https://github-readme-activity-graph.vercel.app/graph?username=nqd1&theme=react-dark&days=40)
 
 
 
