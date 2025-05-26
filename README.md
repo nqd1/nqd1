@@ -49,6 +49,7 @@
 
 
 # 💬 Favourite quote:
-> _"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacinia tincidunt finibus. Nam at felis vel erat molestie viverra ut a ante. Donec tincidunt, erat ut congue porta, ex tortor egestas mi, vel mollis augue mi eget velit."_ - John Ligma 
++ _"An idiot admires complexity. A genius admires simplicity."_ - Terry A. Davis 
++ _"Open source is the only way to get real innovation."_ – Tim O'Reilly
 
 
