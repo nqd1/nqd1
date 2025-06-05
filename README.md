@@ -1,3 +1,8 @@
+<p align="center"> 
+  Visitor count<br>
+  <img src="https://profile-counter.glitch.me/nqd1/count.svg" />
+</p>
+
 # 💫About me:
 🎓 Nguyễn Quý Đức, IT-E6 K68 HUST, Hà Nội<br>
 🎮 Chess, coding, Photoshop, LoL<br>
