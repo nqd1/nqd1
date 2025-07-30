@@ -6,7 +6,7 @@
 # 💫About me:
 🎓 Nguyễn Quý Đức, IT-E6 K68 HUST, Hà Nội<br>
 🎮 Chess, coding, Photoshop, LoL<br>
-🛠 Having interest in embeded system <br>
+🛠 Having interest in Edge AI (no i dont goon on AI) <br>
 🦀 Learning Rust <br> 
 🎵 Jpop, Vpop, rock<br>
 🍵 Tea lover <br>
