@@ -1,12 +1,12 @@
 <p align="center"> 
   Visitor count<br>
-  <img src="https://profile-counter.glitch.me/nqd1/count.svg" />
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=nqd.visitor-badge" />
 </p>
 
 # 💫About me:
 🎓 Nguyễn Quý Đức, IT-E6 K68 HUST, Hà Nội<br>
 🎮 Chess, coding, Photoshop, LoL<br>
-🛠 Having interest in Edge AI (no i dont goon on AI) <br>
+🛠 Having interest in Edge AI and low level programming <br>
 🦀 Learning Rust <br> 
 🎵 Jpop, Vpop, rock<br>
 🍵 Tea lover <br>
