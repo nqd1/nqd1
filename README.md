@@ -1,5 +1,5 @@
+# Visitor count
 <p align="center"> 
-  <h1>Visitor count<h1/>
   <img src="https://visitor-badge.laobi.icu/badge?page_id=nqd.visitor-badge" width="40%" height="40%"/>
 </p>
 
