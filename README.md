@@ -1,6 +1,6 @@
 <p align="center"> 
-  Visitor count<br>
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=nqd.visitor-badge" />
+  <h1>Visitor count<h1/>
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=nqd.visitor-badge" width="40%" height="40%"/>
 </p>
 
 # 💫About me:
