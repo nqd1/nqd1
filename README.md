@@ -1,8 +1,3 @@
-# Visitor count
-<p align="center"> 
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=nqd.visitor-badge" width="40%" height="40%"/>
-</p>
-
 # 💫About me:
 🎓 Nguyễn Quý Đức, IT-E6 K68 HUST, Hà Nội<br>
 🎮 Chess, coding, Photoshop, LoL<br>
@@ -12,7 +7,10 @@
 🍵 Tea lover <br>
 🌍 Tiếng Việt, English, 日本語, 中国語？
 
-
+# Visitor count
+<p align="center"> 
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=nqd.visitor-badge" width="40%" height="40%"/>
+</p>
 
 # 🌐 Socials:
 <a href="https://facebook.com/nqd1445">
