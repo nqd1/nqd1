@@ -6,27 +6,6 @@
 🎵 Jpop, Vpop, rock<br>
 🍵 Tea lover <br>
 🌍 Tiếng Việt, English, 日本語, 中国語？
-
-# Visitor count
-<p align="center"> 
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=nqd.visitor-badge" width="40%" height="40%"/>
-</p>
-
-# 🌐 Socials:
-<a href="https://facebook.com/nqd1445">
-  <img src="https://img.shields.io/badge/Facebook-%231877F2.svg?logo=Facebook&logoColor=white" alt="Facebook">
-</a>
-<a href="mailto:duc.nq235682@sis.hust.edu.vn">
-  <img src="https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white" alt="Email">
-</a>
-
-# 📊 GitHub Stats:
-![](https://github-readme-activity-graph.vercel.app/graph?username=nqd1&theme=react-dark&days=20)
-![](https://nirzak-streak-stats.vercel.app/?user=nqd1&theme=transparent&hide_border=false)<br/>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=nqd1&theme=transparent&hide_border=false&include_all_commits=true&count_private=true&lang_count=20&layout=donut&langs_count=12) <!--layout=donut hasnt updated yet--><br/>
-
-
-
 # 💻 Tech Stack:
 ## Programming Languages:
 ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white) 
@@ -73,6 +52,27 @@
 ![Adobe Illustrator](https://img.shields.io/badge/adobe%20illustrator-%23FF9A00.svg?style=for-the-badge&logo=adobe%20illustrator&logoColor=white)
 ![Adobe Photoshop](https://img.shields.io/badge/adobe%20photoshop-%2331A8FF.svg?style=for-the-badge&logo=adobe%20photoshop&logoColor=white) 
 ![Arduino](https://img.shields.io/badge/-Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white) 
+
+
+# Visitor count
+<p align="center"> 
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=nqd.visitor-badge" width="10%" height="10%"/>
+</p>
+
+# 🌐 Socials:
+<a href="https://facebook.com/nqd1445">
+  <img src="https://img.shields.io/badge/Facebook-%231877F2.svg?logo=Facebook&logoColor=white" alt="Facebook">
+</a>
+<a href="mailto:duc.nq235682@sis.hust.edu.vn">
+  <img src="https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white" alt="Email">
+</a>
+
+# 📊 GitHub Stats:
+![](https://github-readme-activity-graph.vercel.app/graph?username=nqd1&theme=react-dark&days=20)
+![](https://nirzak-streak-stats.vercel.app/?user=nqd1&theme=transparent&hide_border=false)<br/>
+![](https://github-readme-stats.vercel.app/api/top-langs/?username=nqd1&theme=transparent&hide_border=false&include_all_commits=true&count_private=true&lang_count=20&layout=donut&langs_count=12) <!--layout=donut hasnt updated yet--><br/>
+
+
 
 
 
