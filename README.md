@@ -68,6 +68,8 @@
 </a>
 
 # 📊 GitHub Stats:
+![GitHub Metrics](https://raw.githubusercontent.com/nqd1/nqd1/main/github-metrics.svg)
+
 ![](https://github-readme-activity-graph.vercel.app/graph?username=nqd1&theme=react-dark&days=20)
 ![](https://nirzak-streak-stats.vercel.app/?user=nqd1&theme=transparent&hide_border=false)<br/>
 ![](https://github-readme-stats.vercel.app/api/top-langs/?username=nqd1&theme=transparent&hide_border=false&include_all_commits=true&count_private=true&lang_count=20&layout=donut&langs_count=12) <!--layout=donut hasnt updated yet--><br/>
