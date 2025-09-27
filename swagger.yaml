@@ -27,7 +27,7 @@ paths:
         - "QR Generation"
       summary: "Tạo mã QR thanh toán từ thông tin người dùng"
       description: |
-        Endpoint này nhận thông tin chi tiết của người dùng qua JSON body và gọi đến API của VietQR để tạo mã QR.
+        Endpoint này nhận thông tin chi tiết của người dùng qua JSON body và tạo mã QR cho tất cả các tài khoản đang hoạt động (isActive: true).
       requestBody:
         description: "Đối tượng chứa thông tin người dùng để đăng ký và tạo mã QR."
         required: true
@@ -41,9 +41,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/QrSuccessResponse'
+                type: array
+                items:
+                  $ref: '#/components/schemas/QrSuccessResponse'
         '400':
-          description: "Dữ liệu đầu vào không hợp lệ."
+          description: "Dữ liệu đầu vào không hợp lệ hoặc không có tài khoản nào đang hoạt động."
           content:
             application/json:
               schema:
@@ -206,7 +208,6 @@ components:
         - sdt
         - cccd
         - dia_chi
-        - toAccountID
       properties:
         ho_ten:
           type: string
@@ -220,9 +221,6 @@ components:
         dia_chi:
           type: string
           example: "Số 1, Đường X, Quận Y, Hà Nội"
-        toAccountID:
-          type: string
-          example: "8880206231"
         don_vi_cong_tac:
           type: string
         gioi_tinh:
@@ -251,10 +249,16 @@ components:
           properties:
             qrCode:
               type: string
-              example: "00020....."
-            qrDataURL:
+              example: "00020101021238540010A000000072701240006970415011009021720050208QRIBFTTA5303704540616000005802VN6247084305"
+            amount:
+              type: number
+              example: 160000
+            bankName:
               type: string
-              example: "data:image/png;base64,cksdnovji..."
+              example: "Vietinbank"
+            accountName:
+              type: string
+              example: "Nguyen Quy Duc"
 
     ErrorResponse:
       type: object
@@ -291,6 +295,8 @@ components:
                   accountID:
                     type: string
                   accountName:
+                    type: string
+                  bankName:
                     type: string
               transactionCode:
                 type: string
