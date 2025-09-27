@@ -1,338 +1,341 @@
 openapi: 3.0.0
 info:
-  title: "Payment QR Code Generation and Feedback API"
-  description: |
-    This API includes the following functionalities:
-    1. Generate a payment QR code from user information.
-    2. Search for created transactions.
-    3. Receive, view, and manage user feedback.
-  version: "1.0.0"
+  title: "API Tạo Mã QR Thanh Toán và Phản Hồi"
+  description: |
+    API này bao gồm các chức năng:
+    1. Tạo mã QR thanh toán từ thông tin người dùng.
+    2. Tìm kiếm các giao dịch đã tạo.
+    3. Nhận, xem và quản lý phản hồi từ người dùng.
+  version: "1.0.0"
 
 servers:
-  - url: "http://localhost:3000/api"
-    description: "Local development server"
+  - url: "http://localhost:3000/api"
+    description: "Server phát triển cục bộ"
 
 tags:
-  - name: "QR Generation"
-    description: "APIs related to QR code generation"
-  - name: "Transaction Search"
-    description: "APIs related to transaction searching"
-  - name: "Feedback"
-    description: "APIs for receiving and managing user feedback"
+  - name: "QR Generation"
+    description: "Các API liên quan đến việc tạo mã QR"
+  - name: "Transaction Search"
+    description: "Các API liên quan đến việc tìm kiếm giao dịch"
+  - name: "Feedback"
+    description: "API để nhận và quản lý phản hồi từ người dùng"
 
 paths:
-  /qr:
-    post:
-      tags:
-        - "QR Generation"
-      summary: "Generate a payment QR code from user information"
-      description: |
-        This endpoint receives user details via a JSON body and calls the VietQR API to generate a QR code.
-      requestBody:
-        description: "Object containing user information for registration and QR code generation."
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UserInput'
-      responses:
-        '200':
-          description: "QR code generated successfully."
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/QrSuccessResponse'
-        '400':
-          description: "Invalid input data."
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '500':
-          description: "Server error or error from the VietQR API."
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
+  /qr:
+    post:
+      tags:
+        - "QR Generation"
+      summary: "Tạo mã QR thanh toán từ thông tin người dùng"
+      description: |
+        Endpoint này nhận thông tin chi tiết của người dùng qua JSON body và gọi đến API của VietQR để tạo mã QR.
+      requestBody:
+        description: "Đối tượng chứa thông tin người dùng để đăng ký và tạo mã QR."
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInput'
+      responses:
+        '200':
+          description: "Tạo mã QR thành công."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QrSuccessResponse'
+        '400':
+          description: "Dữ liệu đầu vào không hợp lệ."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: "Lỗi từ server hoặc từ API của VietQR."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
 
-  /search:
-    get:
-      tags:
-        - "Transaction Search"
-      summary: "Search for transactions by phone number, citizen ID, or transaction code"
-      description: "This endpoint allows searching for transactions. Sensitive information will be masked."
-      parameters:
-        - name: query
-          in: query
-          required: true
-          description: "Search keyword (phone number, citizen ID, or transaction code)"
-          schema:
-            type: string
-            example: "0912345678"
-      responses:
-        '200':
-          description: "Search successful."
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SearchResponse'
-        '400':
-          description: "Missing search keyword."
-        '404':
-          description: "Transaction not found."
-        '500':
-          description: "Internal server error."
+  /search:
+    get:
+      tags:
+        - "Transaction Search"
+      summary: "Tìm kiếm giao dịch bằng SĐT, CCCD hoặc mã giao dịch"
+      description: "Endpoint này cho phép tìm kiếm giao dịch. Thông tin nhạy cảm sẽ được che đi."
+      parameters:
+        - name: query
+          in: query
+          required: true
+          description: "Từ khóa tìm kiếm (SĐT, CCCD hoặc mã giao dịch)"
+          schema:
+            type: string
+            example: "0912345678"
+      responses:
+        '200':
+          description: "Tìm kiếm thành công."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400':
+          description: "Thiếu từ khóa tìm kiếm."
+        '404':
+          description: "Không tìm thấy giao dịch."
+        '500':
+          description: "Lỗi máy chủ nội bộ."
 
-  /feedback:
-    get:
-      tags:
-        - "Feedback"
-      summary: "Get a list of all feedback"
-      description: "This endpoint returns a list of all submitted feedback, sorted by the most recent."
-      responses:
-        '200':
-          description: "Successfully retrieved the list."
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: "Found 5 feedback entries."
-                  data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Feedback'
-        '500':
-          description: "Internal server error."
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-    post:
-      tags:
-        - "Feedback"
-      summary: "Submit user feedback"
-      description: |
-        This endpoint receives feedback from users, including their full name, email, content, and an optional attachment.
-        Data is sent as `multipart/form-data`.
-      requestBody:
-        description: "Object containing feedback information."
-        required: true
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              required:
-                - fullName
-                - email
-                - content
-              properties:
-                fullName:
-                  type: string
-                  description: "Full name of the sender."
-                  example: "Jane Doe"
-                email:
-                  type: string
-                  format: email
-                  description: "Email address of the sender."
-                  example: "janedoe@email.com"
-                content:
-                  type: string
-                  description: "Detailed content of the feedback."
-                  example: "The interface is very user-friendly!"
-                attachment:
-                  type: string
-                  format: binary
-                  description: "Attachment (optional). Only png, jpg, pdf are accepted."
-      responses:
-        '201':
-          description: "Feedback submitted successfully."
-        '400':
-          description: "Invalid data or missing fields."
-        '500':
-          description: "Internal server error."
+  /feedback:
+    get:
+      tags:
+        - "Feedback"
+      summary: "Lấy danh sách tất cả phản hồi"
+      description: "Endpoint này trả về một danh sách tất cả các phản hồi đã được gửi, sắp xếp theo thời gian mới nhất."
+      responses:
+        '200':
+          description: "Lấy danh sách thành công."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: "Tìm thấy 5 phản hồi."
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Feedback'
+        '500':
+          description: "Lỗi máy chủ nội bộ."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      tags:
+        - "Feedback"
+      summary: "Gửi phản hồi của người dùng"
+      description: |
+        Endpoint này nhận phản hồi từ người dùng, bao gồm họ tên, email, nội dung, và một tệp đính kèm tùy chọn.
+        Dữ liệu được gửi dưới dạng `multipart/form-data`.
+      requestBody:
+        description: "Đối tượng chứa thông tin phản hồi."
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - ho_ten
+                - email
+                - noi_dung
+              properties:
+                ho_ten:
+                  type: string
+                  description: "Họ và tên người gửi."
+                  example: "Trần Thị B"
+                email:
+                  type: string
+                  format: email
+                  description: "Địa chỉ email người gửi."
+                  example: "tranthib@email.com"
+                noi_dung:
+                  type: string
+                  description: "Nội dung chi tiết của phản hồi."
+                  example: "Giao diện rất dễ sử dụng!"
+                tep_dinh_kem:
+                  type: string
+                  format: binary
+                  description: "Tệp đính kèm (tùy chọn). Chỉ chấp nhận png, jpg, pdf."
+      responses:
+        '201':
+          description: "Gửi phản hồi thành công."
+        '400':
+          description: "Dữ liệu không hợp lệ hoặc thiếu trường."
+        '500':
+          description: "Lỗi máy chủ nội bộ."
 
-  /feedback/{id}:
-    patch:
-      tags:
-        - "Feedback"
-      summary: "Update the status of a feedback entry (Admin)"
-      description: "Allows an admin to update the status of a feedback entry based on its ID."
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: "ID of the feedback to be updated"
-          schema:
-            type: string
-            example: "64f8c9b2e4b4d2a1c0e9d6f5"
-      requestBody:
-        description: "Object containing the new status."
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - status
-              properties:
-                status:
-                  type: string
-                  description: "The new status. Must be 'pending', 'done', or 'rejected'."
-                  enum: [pending, done, rejected]
-                  example: "done"
-      responses:
-        '200':
-          description: "Update successful."
-        '400':
-          description: "Invalid status."
-        '404':
-          description: "Feedback not found."
-        '500':
-          description: "Internal server error."
+  /feedback/{id}:
+    patch:
+      tags:
+        - "Feedback"
+      summary: "Cập nhật trạng thái của một phản hồi (Admin)"
+      description: "Cho phép admin cập nhật trạng thái của một phản hồi dựa vào ID."
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: "ID của feedback cần cập nhật"
+          schema:
+            type: string
+            example: "64f8c9b2e4b4d2a1c0e9d6f5"
+      requestBody:
+        description: "Đối tượng chứa trạng thái mới."
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - status
+              properties:
+                status:
+                  type: string
+                  description: "Trạng thái mới. Phải là 'pending', 'done', hoặc 'rejected'."
+                  enum: [pending, done, rejected]
+                  example: "done"
+      responses:
+        '200':
+          description: "Cập nhật thành công."
+        '400':
+          description: "Trạng thái không hợp lệ."
+        '404':
+          description: "Không tìm thấy feedback."
+        '500':
+          description: "Lỗi máy chủ nội bộ."
 
 components:
-  schemas:
-    UserInput:
-      type: object
-      description: "Information provided by the user."
-      required:
-        - fullName
-        - phoneNumber
-        - citizenId
-        - address
-        - toAccountID
-      properties:
-        fullName:
-          type: string
-          example: "John Doe"
-        phoneNumber:
-          type: string
-          example: "0912345678"
-        citizenId:
-          type: string
-          example: "012345678912"
-        address:
-          type: string
-          example: "1 X Street, Y District, Hanoi"
-        toAccountID:
-          type: string
-          example: "8880206231"
-        workplace:
-          type: string
-        gender:
-          type: string
-        email:
-          type: string
-          format: email
+  schemas:
+    UserInput:
+      type: object
+      description: "Thông tin người dùng cung cấp."
+      required:
+        - ho_ten
+        - sdt
+        - cccd
+        - dia_chi
+        - toAccountID
+      properties:
+        ho_ten:
+          type: string
+          example: "Nguyễn Văn A"
+        sdt:
+          type: string
+          example: "0912345678"
+        cccd:
+          type: string
+          example: "012345678912"
+        dia_chi:
+          type: string
+          example: "Số 1, Đường X, Quận Y, Hà Nội"
+        toAccountID:
+          type: string
+          example: "8880206231"
+        don_vi_cong_tac:
+          type: string
+        gioi_tinh:
+          type: string
+        email:
+          type: string
+          format: email
 
-    QrSuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          example: true
-        message:
-          type: string
-          example: "QR code has been created successfully!"
-        transactionCode:
-          type: string
-          example: "a1b2c3d4e5"
-        transactionId:
-          type: number
-          example: 123
-        data:
-          type: object
-          properties:
-            qrCode:
-              type: string
-            qrDataURL:
-              type: string
+    QrSuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: "Mã QR đã được tạo thành công!"
+        ma_giao_dich:
+          type: string
+          example: "a1b2c3d4e5"
+        transaction_id:
+          type: number
+          example: 123
+        data:
+          type: object
+          properties:
+            qrCode:
+              type: string
+            qrDataURL:
+              type: string
 
-    ErrorResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          example: false
-        message:
-          type: string
-        details:
-          type: object
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+        details:
+          type: object
 
-    SearchResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          example: true
-        message:
-          type: string
-          example: "Found 2 transactions."
-        data:
-          type: array
-          items:
-            type: object
-            properties:
-              transactionId:
-                type: number
-              amount:
-                type: number
-              toAccount:
-                type: object
-                properties:
-                  accountID:
-                    type: string
-                  accountName:
-                    type: string
-              transactionCode:
-                type: string
-              userInfo:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  phoneNumber:
-                    type: string
-                  id:
-                    type: string
-                  address:
-                    type: string
-              createdAt:
-                type: string
-                format: date-time
-              status:
-                type: string
+    SearchResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: "Tìm thấy 2 giao dịch."
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              transactionId:
+                type: number
+              amount:
+                type: number
+              toAccount:
+                type: object
+                properties:
+                  accountID:
+                    type: string
+                  accountName:
+                    type: string
+              transactionCode:
+                type: string
+              userInfo:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  phonenum:
+                    type: string
+                  id:
+                    type: string
+                  address:
+                    type: string
+              createdAt:
+                type: string
+                format: date-time
+              status:
+                type: string
 
-    Feedback:
-      type: object
-      properties:
-        _id:
-          type: string
-          example: "64f8c9b2e4b4d2a1c0e9d6f5"
-        fullName:
-          type: string
-          example: "Jane Doe"
-        email:
-          type: string
-          example: "janedoe@email.com"
-        content:
-          type: string
-          example: "The interface is very user-friendly!"
-        status:
-          type: string
-          example: "pending"
-        filePath:
-          type: string
-          example: "uploads/attachment-1694025650123-123456789.pdf"
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
+    Feedback:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: "64f8c9b2e4b4d2a1c0e9d6f5"
+        ho_ten:
+          type: string
+          example: "Trần Thị B"
+        email:
+          type: string
+          example: "tranthib@email.com"
+        noi_dung:
+          type: string
+          example: "Giao diện rất dễ sử dụng!"
+        status:
+          type: string
+          example: "pending"
+        filePath:
+          type: string
+          example: "uploads/tep_dinh_kem-1694025650123-123456789.pdf"
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+
+chuyển sang tiếng anh
