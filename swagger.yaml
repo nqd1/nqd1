@@ -9,7 +9,7 @@ info:
   version: "1.0.0"
 
 servers:
-  - url: "/api" # Sử dụng relative URL, phù hợp hơn khi deploy
+  - url: "/api"
     description: "Server API"
 
 tags:
@@ -246,15 +246,15 @@ components:
         transaction_id:
           type: number
           example: 123
-        qrInfo: # <-- ĐÃ SỬA TỪ 'data' THÀNH 'qrInfo'
+        qrInfo: 
           type: object
           properties:
             qrCode:
               type: string
-              example: "data:image/png;base64,iVBORw0KGgoAAA..."
+              example: "00020....."
             qrDataURL:
               type: string
-              example: "https://api.vietqr.io/v2/qr/..."
+              example: "data:image/png;base64,cksdnovji..."
 
     ErrorResponse:
       type: object
