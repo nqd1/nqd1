@@ -9,8 +9,8 @@ info:
   version: "1.0.0"
 
 servers:
-  - url: "http://localhost:3000/api"
-    description: "Server phát triển cục bộ"
+  - url: "/api" # Sử dụng relative URL, phù hợp hơn khi deploy
+    description: "Server API"
 
 tags:
   - name: "QR Generation"
@@ -246,13 +246,15 @@ components:
         transaction_id:
           type: number
           example: 123
-        data:
+        qrInfo: # <-- ĐÃ SỬA TỪ 'data' THÀNH 'qrInfo'
           type: object
           properties:
             qrCode:
               type: string
+              example: "data:image/png;base64,iVBORw0KGgoAAA..."
             qrDataURL:
               type: string
+              example: "https://api.vietqr.io/v2/qr/..."
 
     ErrorResponse:
       type: object
