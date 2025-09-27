@@ -1,0 +1,338 @@
+openapi: 3.0.0
+info:
+  title: "Payment QR Code Generation and Feedback API"
+  description: |
+    This API includes the following functionalities:
+    1. Generate a payment QR code from user information.
+    2. Search for created transactions.
+    3. Receive, view, and manage user feedback.
+  version: "1.0.0"
+
+servers:
+  - url: "http://localhost:3000/api"
+    description: "Local development server"
+
+tags:
+  - name: "QR Generation"
+    description: "APIs related to QR code generation"
+  - name: "Transaction Search"
+    description: "APIs related to transaction searching"
+  - name: "Feedback"
+    description: "APIs for receiving and managing user feedback"
+
+paths:
+  /qr:
+    post:
+      tags:
+        - "QR Generation"
+      summary: "Generate a payment QR code from user information"
+      description: |
+        This endpoint receives user details via a JSON body and calls the VietQR API to generate a QR code.
+      requestBody:
+        description: "Object containing user information for registration and QR code generation."
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInput'
+      responses:
+        '200':
+          description: "QR code generated successfully."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QrSuccessResponse'
+        '400':
+          description: "Invalid input data."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: "Server error or error from the VietQR API."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /search:
+    get:
+      tags:
+        - "Transaction Search"
+      summary: "Search for transactions by phone number, citizen ID, or transaction code"
+      description: "This endpoint allows searching for transactions. Sensitive information will be masked."
+      parameters:
+        - name: query
+          in: query
+          required: true
+          description: "Search keyword (phone number, citizen ID, or transaction code)"
+          schema:
+            type: string
+            example: "0912345678"
+      responses:
+        '200':
+          description: "Search successful."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400':
+          description: "Missing search keyword."
+        '404':
+          description: "Transaction not found."
+        '500':
+          description: "Internal server error."
+
+  /feedback:
+    get:
+      tags:
+        - "Feedback"
+      summary: "Get a list of all feedback"
+      description: "This endpoint returns a list of all submitted feedback, sorted by the most recent."
+      responses:
+        '200':
+          description: "Successfully retrieved the list."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: "Found 5 feedback entries."
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Feedback'
+        '500':
+          description: "Internal server error."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      tags:
+        - "Feedback"
+      summary: "Submit user feedback"
+      description: |
+        This endpoint receives feedback from users, including their full name, email, content, and an optional attachment.
+        Data is sent as `multipart/form-data`.
+      requestBody:
+        description: "Object containing feedback information."
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - fullName
+                - email
+                - content
+              properties:
+                fullName:
+                  type: string
+                  description: "Full name of the sender."
+                  example: "Jane Doe"
+                email:
+                  type: string
+                  format: email
+                  description: "Email address of the sender."
+                  example: "janedoe@email.com"
+                content:
+                  type: string
+                  description: "Detailed content of the feedback."
+                  example: "The interface is very user-friendly!"
+                attachment:
+                  type: string
+                  format: binary
+                  description: "Attachment (optional). Only png, jpg, pdf are accepted."
+      responses:
+        '201':
+          description: "Feedback submitted successfully."
+        '400':
+          description: "Invalid data or missing fields."
+        '500':
+          description: "Internal server error."
+
+  /feedback/{id}:
+    patch:
+      tags:
+        - "Feedback"
+      summary: "Update the status of a feedback entry (Admin)"
+      description: "Allows an admin to update the status of a feedback entry based on its ID."
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: "ID of the feedback to be updated"
+          schema:
+            type: string
+            example: "64f8c9b2e4b4d2a1c0e9d6f5"
+      requestBody:
+        description: "Object containing the new status."
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - status
+              properties:
+                status:
+                  type: string
+                  description: "The new status. Must be 'pending', 'done', or 'rejected'."
+                  enum: [pending, done, rejected]
+                  example: "done"
+      responses:
+        '200':
+          description: "Update successful."
+        '400':
+          description: "Invalid status."
+        '404':
+          description: "Feedback not found."
+        '500':
+          description: "Internal server error."
+
+components:
+  schemas:
+    UserInput:
+      type: object
+      description: "Information provided by the user."
+      required:
+        - fullName
+        - phoneNumber
+        - citizenId
+        - address
+        - toAccountID
+      properties:
+        fullName:
+          type: string
+          example: "John Doe"
+        phoneNumber:
+          type: string
+          example: "0912345678"
+        citizenId:
+          type: string
+          example: "012345678912"
+        address:
+          type: string
+          example: "1 X Street, Y District, Hanoi"
+        toAccountID:
+          type: string
+          example: "8880206231"
+        workplace:
+          type: string
+        gender:
+          type: string
+        email:
+          type: string
+          format: email
+
+    QrSuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: "QR code has been created successfully!"
+        transactionCode:
+          type: string
+          example: "a1b2c3d4e5"
+        transactionId:
+          type: number
+          example: 123
+        data:
+          type: object
+          properties:
+            qrCode:
+              type: string
+            qrDataURL:
+              type: string
+
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+        details:
+          type: object
+
+    SearchResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: "Found 2 transactions."
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              transactionId:
+                type: number
+              amount:
+                type: number
+              toAccount:
+                type: object
+                properties:
+                  accountID:
+                    type: string
+                  accountName:
+                    type: string
+              transactionCode:
+                type: string
+              userInfo:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  phoneNumber:
+                    type: string
+                  id:
+                    type: string
+                  address:
+                    type: string
+              createdAt:
+                type: string
+                format: date-time
+              status:
+                type: string
+
+    Feedback:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: "64f8c9b2e4b4d2a1c0e9d6f5"
+        fullName:
+          type: string
+          example: "Jane Doe"
+        email:
+          type: string
+          example: "janedoe@email.com"
+        content:
+          type: string
+          example: "The interface is very user-friendly!"
+        status:
+          type: string
+          example: "pending"
+        filePath:
+          type: string
+          example: "uploads/attachment-1694025650123-123456789.pdf"
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
