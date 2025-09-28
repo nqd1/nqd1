@@ -1,12 +1,13 @@
 openapi: 3.0.0
 info:
-  title: "API Tạo Mã QR Thanh Toán và Phản Hồi"
+  title: "API Tạo Mã QR Thanh Toán, Phản Hồi và Xử Lý Sao Kê"
   description: |
     API này bao gồm các chức năng:
-    1. Tạo mã QR thanh toán từ thông tin người dùng.
+    1. Tạo mã QR thanh toán từ thông tin người dùng và ngân hàng chỉ định.
     2. Tìm kiếm các giao dịch đã tạo.
     3. Nhận, xem và quản lý phản hồi từ người dùng.
-  version: "1.0.0"
+    4. Tải lên và xử lý file sao kê Excel từ các ngân hàng.
+  version: "1.0.1"
 
 servers:
   - url: "/api"
@@ -19,17 +20,20 @@ tags:
     description: "Các API liên quan đến việc tìm kiếm giao dịch"
   - name: "Feedback"
     description: "API để nhận và quản lý phản hồi từ người dùng"
+  - name: "Statement Processing"
+    description: "API để xử lý file sao kê ngân hàng"
 
 paths:
   /qr:
     post:
       tags:
         - "QR Generation"
-      summary: "Tạo mã QR thanh toán từ thông tin người dùng"
+      summary: "Tạo mã QR cho một ngân hàng cụ thể"
       description: |
-        Endpoint này nhận thông tin chi tiết của người dùng qua JSON body và tạo mã QR cho tất cả các tài khoản đang hoạt động (isActive: true).
+        Endpoint này nhận thông tin người dùng và tên ngân hàng, sau đó tạo mã QR cho tài khoản đầu tiên đang hoạt động (isActive: true) khớp với tên ngân hàng đó.
+        Nếu không tìm thấy ngân hàng khớp, nó sẽ tự động chọn tài khoản hoạt động đầu tiên làm phương án dự phòng.
       requestBody:
-        description: "Đối tượng chứa thông tin người dùng để đăng ký và tạo mã QR."
+        description: "Đối tượng chứa thông tin người dùng và tên ngân hàng."
         required: true
         content:
           application/json:
@@ -41,21 +45,13 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/QrSuccessResponse'
+                $ref: '#/components/schemas/QrSuccessResponseWrapper' # Sửa đổi
         '400':
-          description: "Dữ liệu đầu vào không hợp lệ hoặc không có tài khoản nào đang hoạt động."
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
+          description: "Dữ liệu đầu vào không hợp lệ."
+        '404':
+          description: "Không có tài khoản nào đang hoạt động."
         '500':
           description: "Lỗi từ server hoặc từ API của VietQR."
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
 
   /search:
     get:
@@ -111,10 +107,6 @@ paths:
                       $ref: '#/components/schemas/Feedback'
         '500':
           description: "Lỗi máy chủ nội bộ."
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
     post:
       tags:
         - "Feedback"
@@ -198,6 +190,64 @@ paths:
         '500':
           description: "Lỗi máy chủ nội bộ."
 
+  /xlsx/mbbank:
+    post:
+      tags:
+        - "Statement Processing"
+      summary: "Tải lên và xử lý sao kê MBBank"
+      description: "Endpoint nhận file sao kê định dạng Excel (.xlsx) từ MBBank, phân tích và lưu các giao dịch vào database."
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                statement:
+                  type: string
+                  format: binary
+                  description: "File sao kê Excel (.xlsx) của MBBank."
+      responses:
+        '201':
+          description: "Xử lý sao kê thành công."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XlsxSuccessResponse'
+        '400':
+          description: "Không có file được tải lên hoặc định dạng file không hợp lệ."
+        '500':
+          description: "Lỗi trong quá trình xử lý file."
+          
+  /xlsx/bidv:
+    post:
+      tags:
+        - "Statement Processing"
+      summary: "Tải lên và xử lý sao kê BIDV"
+      description: "Endpoint nhận file sao kê định dạng Excel (.xlsx) hoặc CSV (.csv) từ BIDV, phân tích và lưu các giao dịch vào database."
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                statement:
+                  type: string
+                  format: binary
+                  description: "File sao kê Excel (.xlsx) hoặc CSV (.csv) của BIDV."
+      responses:
+        '201':
+          description: "Xử lý sao kê thành công."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XlsxSuccessResponse'
+        '400':
+          description: "Không có file được tải lên hoặc định dạng file không hợp lệ."
+        '500':
+          description: "Lỗi trong quá trình xử lý file."
+
 components:
   schemas:
     UserInput:
@@ -208,6 +258,7 @@ components:
         - sdt
         - cccd
         - dia_chi
+        - bankName
       properties:
         ho_ten:
           type: string
@@ -221,6 +272,9 @@ components:
         dia_chi:
           type: string
           example: "Số 1, Đường X, Quận Y, Hà Nội"
+        bankName:
+          type: string
+          example: "MBBank"
         don_vi_cong_tac:
           type: string
         gioi_tinh:
@@ -228,16 +282,10 @@ components:
         email:
           type: string
           format: email
-
+          
     QrSuccessResponse:
       type: object
       properties:
-        success:
-          type: boolean
-          example: true
-        message:
-          type: string
-          example: "Mã QR đã được tạo thành công!"
         ma_giao_dich:
           type: string
           example: "a1b2c3d4e5"
@@ -249,17 +297,29 @@ components:
           properties:
             qrCode:
               type: string
-              example: "00020101021238540010A000000072701240006970415011009021720050208QRIBFTTA5303704540616000005802VN6247084305"
+              example: "000201010212..."
             amount:
               type: number
               example: 160000
             bankName:
               type: string
-              example: "Vietinbank"
+              example: "MBBank"
             accountName:
               type: string
-              example: "Nguyen Quy Duc"
+              example: "Nguyen Hoang Viet"
 
+    QrSuccessResponseWrapper:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: "Mã QR đã được tạo thành công!"
+        data:
+          $ref: '#/components/schemas/QrSuccessResponse'
+          
     ErrorResponse:
       type: object
       properties:
@@ -302,13 +362,17 @@ components:
                 type: string
               userInfo:
                 type: object
+                description: "Thông tin đã được che bớt"
                 properties:
                   name:
                     type: string
+                    example: "Nxxxxxx Vxx A"
                   phonenum:
                     type: string
+                    example: "091xxxx678"
                   id:
                     type: string
+                    example: "012xxxx912"
                   address:
                     type: string
               createdAt:
@@ -344,3 +408,13 @@ components:
         updatedAt:
           type: string
           format: date-time
+
+    XlsxSuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: "Tải lên thành công! Đã lưu 25 giao dịch từ file sao-ke.xlsx."
