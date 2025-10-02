@@ -115,7 +115,7 @@ paths:
       summary: "Đối soát các giao dịch đang chờ"
       security:
         - bearerAuth: []
-      description: "**Yêu cầu xác thực.** Kích hoạt quá trình đối soát tự động. Hệ thống sẽ quét các giao dịch 'pending' và so khớp chúng với các bản ghi trong sao kê ngân hàng. Sẽ so khớp các trường `amount` và kiểm tra `transacCode` có nằm trong `statemententries.content"
+      description: "**Yêu cầu xác thực.** Kích hoạt quá trình đối soát tự động. Hệ thống sẽ quét các giao dịch 'pending' và so khớp chúng với các bản ghi trong sao kê ngân hàng. Sẽ so khớp các trường `amount` và kiểm tra `transacCode` có nằm trong `statemententries.content`"
       responses:
         '200':
           description: "Đối soát hoàn tất."
