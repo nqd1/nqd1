@@ -1,17 +1,16 @@
 openapi: 3.0.0
 info:
-  title: "API Tạo Mã QR Thanh Toán, Phản Hồi và Xử Lý Sao Kê"
+  title: "API Tạo Mã QR Thanh Toán và Phản Hồi Người Dùng"
   description: |
     API này bao gồm các chức năng:
-    1. Tạo mã QR thanh toán từ thông tin người dùng và ngân hàng chỉ định.
+    1. Tạo mã QR thanh toán từ thông tin người dùng.
     2. Tìm kiếm các giao dịch đã tạo.
     3. Nhận, xem và quản lý phản hồi từ người dùng.
-    4. Tải lên và xử lý file sao kê Excel từ các ngân hàng.
   version: "1.0.1"
 
 servers:
   - url: "/api"
-    description: "Server API"
+    description: "Product API Server"
 
 tags:
   - name: "QR Generation"
@@ -20,8 +19,6 @@ tags:
     description: "Các API liên quan đến việc tìm kiếm giao dịch"
   - name: "Feedback"
     description: "API để nhận và quản lý phản hồi từ người dùng"
-  - name: "Statement Processing"
-    description: "API để xử lý file sao kê ngân hàng"
 
 paths:
   /qr:
@@ -45,7 +42,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/QrSuccessResponseWrapper' # Sửa đổi
+                $ref: '#/components/schemas/QrSuccessResponseWrapper'
         '400':
           description: "Dữ liệu đầu vào không hợp lệ."
         '404':
@@ -189,64 +186,6 @@ paths:
           description: "Không tìm thấy feedback."
         '500':
           description: "Lỗi máy chủ nội bộ."
-
-  /xlsx/mbbank:
-    post:
-      tags:
-        - "Statement Processing"
-      summary: "Tải lên và xử lý sao kê MBBank"
-      description: "Endpoint nhận file sao kê định dạng Excel (.xlsx) từ MBBank, phân tích và lưu các giao dịch vào database."
-      requestBody:
-        required: true
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                statement:
-                  type: string
-                  format: binary
-                  description: "File sao kê Excel (.xlsx) của MBBank."
-      responses:
-        '201':
-          description: "Xử lý sao kê thành công."
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/XlsxSuccessResponse'
-        '400':
-          description: "Không có file được tải lên hoặc định dạng file không hợp lệ."
-        '500':
-          description: "Lỗi trong quá trình xử lý file."
-          
-  /xlsx/bidv:
-    post:
-      tags:
-        - "Statement Processing"
-      summary: "Tải lên và xử lý sao kê BIDV"
-      description: "Endpoint nhận file sao kê định dạng Excel (.xlsx) hoặc CSV (.csv) từ BIDV, phân tích và lưu các giao dịch vào database."
-      requestBody:
-        required: true
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                statement:
-                  type: string
-                  format: binary
-                  description: "File sao kê Excel (.xlsx) hoặc CSV (.csv) của BIDV."
-      responses:
-        '201':
-          description: "Xử lý sao kê thành công."
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/XlsxSuccessResponse'
-        '400':
-          description: "Không có file được tải lên hoặc định dạng file không hợp lệ."
-        '500':
-          description: "Lỗi trong quá trình xử lý file."
 
 components:
   schemas:
@@ -408,13 +347,3 @@ components:
         updatedAt:
           type: string
           format: date-time
-
-    XlsxSuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          example: true
-        message:
-          type: string
-          example: "Tải lên thành công! Đã lưu 25 giao dịch từ file sao-ke.xlsx."
