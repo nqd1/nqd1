@@ -1,12 +1,13 @@
 openapi: 3.0.0
 info:
-  title: "API Tạo Mã QR Thanh Toán và Phản Hồi Người Dùng"
+  title: "API Chứng Nhận Số"
   description: |
     API này bao gồm các chức năng:
-    1. Tạo mã QR thanh toán từ thông tin người dùng.
-    2. Tìm kiếm các giao dịch đã tạo.
-    3. Nhận, xem và quản lý phản hồi từ người dùng.
-  version: "1.0.1"
+    1.  Tạo mã QR thanh toán từ thông tin người dùng.
+    2.  Tìm kiếm các giao dịch đã tạo.
+    3.  Nhận, xem và quản lý phản hồi từ người dùng.
+    4.  Lấy nội dung cho trang chủ (landing page).
+  version: "1.0.2"
 
 servers:
   - url: "/api"
@@ -19,8 +20,28 @@ tags:
     description: "Các API liên quan đến việc tìm kiếm giao dịch"
   - name: "Feedback"
     description: "API để nhận và quản lý phản hồi từ người dùng"
+  - name: "Landing Page"
+    description: "API để lấy nội dung cho trang chủ"
 
 paths:
+  /page:
+    get:
+      tags:
+        - "Landing Page"
+      summary: "Lấy dữ liệu cho trang landing page"
+      description: "Endpoint này trả về toàn bộ nội dung cần thiết để hiển thị trên trang chủ (landing page) từ collection 'cms.landingpage'."
+      responses:
+        '200':
+          description: "Lấy dữ liệu thành công."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageSuccessResponse'
+        '404':
+          description: "Không tìm thấy dữ liệu trang."
+        '500':
+          description: "Lỗi máy chủ nội bộ."
+
   /qr:
     post:
       tags:
@@ -60,7 +81,7 @@ paths:
         - name: query
           in: query
           required: true
-          description: "Từ khóa tìm kiếm (SĐT, CCCD hoặc mã giao dịch)"
+          description: "Từ khóa tìm kiếm (SĐT, CCCD, email hoặc mã giao dịch)"
           schema:
             type: string
             example: "0912345678"
@@ -214,14 +235,10 @@ components:
         bankName:
           type: string
           example: "MBBank"
-        don_vi_cong_tac:
-          type: string
-        gioi_tinh:
-          type: string
         email:
           type: string
           format: email
-          
+
     QrSuccessResponse:
       type: object
       properties:
@@ -231,7 +248,7 @@ components:
         transaction_id:
           type: number
           example: 123
-        qrInfo: 
+        qrInfo:
           type: object
           properties:
             qrCode:
@@ -258,7 +275,7 @@ components:
           example: "Mã QR đã được tạo thành công!"
         data:
           $ref: '#/components/schemas/QrSuccessResponse'
-          
+
     ErrorResponse:
       type: object
       properties:
@@ -314,6 +331,8 @@ components:
                     example: "012xxxx912"
                   address:
                     type: string
+                  email:
+                    type: string
               createdAt:
                 type: string
                 format: date-time
@@ -347,3 +366,116 @@ components:
         updatedAt:
           type: string
           format: date-time
+          
+    PageSuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: "Lấy dữ liệu landing page thành công."
+        data:
+          $ref: '#/components/schemas/PageData'
+
+    PageData:
+      type: object
+      description: "Toàn bộ nội dung của landing page"
+      properties:
+        _id:
+          type: string
+        header:
+          type: object
+          properties:
+            title:
+              type: string
+            nav_links:
+              type: array
+              items:
+                type: string
+        main_content:
+          type: object
+          properties:
+            search_section:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                search_info:
+                  type: string
+                search_button:
+                  type: string
+                support_link:
+                  type: string
+            features_section:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                features:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      details:
+                        type: string
+            faq_section:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                questions:
+                  type: array
+                  items:
+                    type: string
+            contact_section:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                form:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                    description:
+                      type: string
+                    fields:
+                      type: array
+                      items:
+                        type: string
+                    submit_button:
+                      type: string
+                    success_message:
+                      type: string
+        footer:
+          type: object
+          properties:
+            title:
+              type: string
+            description:
+              type: string
+            contact_info:
+              type: object
+              properties:
+                address:
+                  type: string
+                phone:
+                  type: string
+                email:
+                  type: string
+            vision:
+              type: string
+            copyright:
+              type: string
