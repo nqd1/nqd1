@@ -191,7 +191,7 @@ AI-on-edge enjoyer.</div>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
                                         <path fill-rule="evenodd" d="M2.75 1.5a.25.25 0 00-.25.25v12.5c0 .138.112.25.25.25h10.5a.25.25 0 00.25-.25V4.664a.25.25 0 00-.073-.177l-2.914-2.914a.25.25 0 00-.177-.073H2.75zM1 1.75C1 .784 1.784 0 2.75 0h7.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0113.25 16H2.75A1.75 1.75 0 011 14.25V1.75zm7 1.5a.75.75 0 01.75.75v1.5h1.5a.75.75 0 010 1.5h-1.5v1.5a.75.75 0 01-1.5 0V7h-1.5a.75.75 0 010-1.5h1.5V4A.75.75 0 018 3.25zm-3 8a.75.75 0 01.75-.75h4.5a.75.75 0 010 1.5h-4.5a.75.75 0 01-.75-.75z"/>
                                     </svg>
-                                    608k added, 8.19k removed
+                                    575k added, 3.07k removed
                                 </div>
                             </section>
                             <section>
@@ -255,25 +255,13 @@ AI-on-edge enjoyer.</div>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
                                 <path fill-rule="evenodd" d="M8 5.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM4 8a4 4 0 118 0 4 4 0 01-8 0z"/>
                             </svg>
-                            <span class="diff-handle">nqd1/utils</span>
-                        </div>
-                        <div class="field">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                                <path fill-rule="evenodd" d="M8 5.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM4 8a4 4 0 118 0 4 4 0 01-8 0z"/>
-                            </svg>
                             <span class="diff-handle">nqd1/short</span>
                         </div>
                         <div class="field">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
                                 <path fill-rule="evenodd" d="M8 5.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM4 8a4 4 0 118 0 4 4 0 01-8 0z"/>
                             </svg>
-                            <span class="diff-handle">nqd1/StockApp</span>
-                        </div>
-                        <div class="field">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                                <path fill-rule="evenodd" d="M8 5.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM4 8a4 4 0 118 0 4 4 0 01-8 0z"/>
-                            </svg>
-                            <span class="diff-handle">nqd1/chatbot-sinno</span>
+                            <span class="diff-handle">nqd1/Personal-Blog</span>
                         </div>
                         <div class="field">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
@@ -298,6 +286,12 @@ AI-on-edge enjoyer.</div>
                                 <path fill-rule="evenodd" d="M8 5.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM4 8a4 4 0 118 0 4 4 0 01-8 0z"/>
                             </svg>
                             <span class="diff-handle">nqd1/chess_oop.20242.nhom1</span>
+                        </div>
+                        <div class="field">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+                                <path fill-rule="evenodd" d="M8 5.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM4 8a4 4 0 118 0 4 4 0 01-8 0z"/>
+                            </svg>
+                            <span class="diff-handle">nqd1/THKTMT</span>
                         </div>
                         <div class="field">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
@@ -328,6 +322,12 @@ AI-on-edge enjoyer.</div>
                                 <path fill-rule="evenodd" d="M8 5.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM4 8a4 4 0 118 0 4 4 0 01-8 0z"/>
                             </svg>
                             <span class="diff-handle">nqd1/DDSE</span>
+                        </div>
+                        <div class="field">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+                                <path fill-rule="evenodd" d="M8 5.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM4 8a4 4 0 118 0 4 4 0 01-8 0z"/>
+                            </svg>
+                            <span class="diff-handle">nqd1/assets-jsdeli</span>
                         </div>
                     </section>
                     <section>
@@ -362,18 +362,6 @@ AI-on-edge enjoyer.</div>
                             <div class="diff-box added"></div>
                             <div class="diff-box deleted"></div>
                             <div class="diff-stats">
-                                <span class="added"> +23.6k</span>
-                                <span class="deleted">   -118</span>
-                            </div>
-                            <span> </span>
-                        </div>
-                        <div class="field">
-                            <div class="diff-box added"></div>
-                            <div class="diff-box added"></div>
-                            <div class="diff-box added"></div>
-                            <div class="diff-box added"></div>
-                            <div class="diff-box deleted"></div>
-                            <div class="diff-stats">
                                 <span class="added"> +19.3k</span>
                                 <span class="deleted">    -23</span>
                             </div>
@@ -383,23 +371,11 @@ AI-on-edge enjoyer.</div>
                             <div class="diff-box added"></div>
                             <div class="diff-box added"></div>
                             <div class="diff-box added"></div>
-                            <div class="diff-box deleted"></div>
-                            <div class="diff-box deleted"></div>
-                            <div class="diff-stats">
-                                <span class="added"> +12.5k</span>
-                                <span class="deleted"> -4.82k</span>
-                            </div>
-                            <span> </span>
-                        </div>
-                        <div class="field">
-                            <div class="diff-box added"></div>
-                            <div class="diff-box added"></div>
-                            <div class="diff-box added"></div>
                             <div class="diff-box added"></div>
                             <div class="diff-box deleted"></div>
                             <div class="diff-stats">
-                                <span class="added"> +13.2k</span>
-                                <span class="deleted">   -588</span>
+                                <span class="added"> +14.6k</span>
+                                <span class="deleted">   -369</span>
                             </div>
                             <span> </span>
                         </div>
@@ -448,6 +424,18 @@ AI-on-edge enjoyer.</div>
                             <div class="diff-stats">
                                 <span class="added"> +2.51k</span>
                                 <span class="deleted">   -670</span>
+                            </div>
+                            <span> </span>
+                        </div>
+                        <div class="field">
+                            <div class="diff-box added"></div>
+                            <div class="diff-box added"></div>
+                            <div class="diff-box added"></div>
+                            <div class="diff-box added"></div>
+                            <div class="diff-box deleted"></div>
+                            <div class="diff-stats">
+                                <span class="added"> +2.54k</span>
+                                <span class="deleted">    -39</span>
                             </div>
                             <span> </span>
                         </div>
@@ -511,6 +499,18 @@ AI-on-edge enjoyer.</div>
                             </div>
                             <span> </span>
                         </div>
+                        <div class="field">
+                            <div class="diff-box added"></div>
+                            <div class="diff-box added"></div>
+                            <div class="diff-box added"></div>
+                            <div class="diff-box deleted"></div>
+                            <div class="diff-box deleted"></div>
+                            <div class="diff-stats">
+                                <span class="added">     +1</span>
+                                <span class="deleted">     -1</span>
+                            </div>
+                            <span> </span>
+                        </div>
                     </section>
                 </div>
                 <div class="row margin-bottom">
@@ -569,19 +569,19 @@ AI-on-edge enjoyer.</div>
                         </g>
                         <g transform="translate(39,0)" fill="none" font-size="10" font-family="sans-serif" text-anchor="end">
                             <path class="domain" stroke="currentColor" d="M-6,5.5H0.5V276.5H-6"/>
-                            <g class="tick" opacity="1" transform="translate(0,26.11545684622853)">
+                            <g class="tick" opacity="1" transform="translate(0,20.05889073350114)">
                                 <line stroke="currentColor" x2="-6"/>
                                 <text fill="currentColor" x="-9" dy="0.32em">400k</text>
                             </g>
-                            <g class="tick" opacity="1" transform="translate(0,54.8365926346714)">
+                            <g class="tick" opacity="1" transform="translate(0,50.29416805012585)">
                                 <line stroke="currentColor" x2="-6"/>
                                 <text fill="currentColor" x="-9" dy="0.32em">300k</text>
                             </g>
-                            <g class="tick" opacity="1" transform="translate(0,83.55772842311424)">
+                            <g class="tick" opacity="1" transform="translate(0,80.52944536675055)">
                                 <line stroke="currentColor" x2="-6"/>
                                 <text fill="currentColor" x="-9" dy="0.32em">200k</text>
                             </g>
-                            <g class="tick" opacity="1" transform="translate(0,112.27886421155712)">
+                            <g class="tick" opacity="1" transform="translate(0,110.76472268337528)">
                                 <line stroke="currentColor" x2="-6"/>
                                 <text fill="currentColor" x="-9" dy="0.32em">100k</text>
                             </g>
@@ -589,25 +589,25 @@ AI-on-edge enjoyer.</div>
                                 <line stroke="currentColor" x2="-6"/>
                                 <text fill="currentColor" x="-9" dy="0.32em">0.0</text>
                             </g>
-                            <g class="tick" opacity="1" transform="translate(0,169.72113578844287)">
+                            <g class="tick" opacity="1" transform="translate(0,171.23527731662475)">
                                 <line stroke="currentColor" x2="-6"/>
                                 <text fill="currentColor" x="-9" dy="0.32em">−100k</text>
                             </g>
-                            <g class="tick" opacity="1" transform="translate(0,198.44227157688576)">
+                            <g class="tick" opacity="1" transform="translate(0,201.47055463324944)">
                                 <line stroke="currentColor" x2="-6"/>
                                 <text fill="currentColor" x="-9" dy="0.32em">−200k</text>
                             </g>
-                            <g class="tick" opacity="1" transform="translate(0,227.1634073653286)">
+                            <g class="tick" opacity="1" transform="translate(0,231.70583194987415)">
                                 <line stroke="currentColor" x2="-6"/>
                                 <text fill="currentColor" x="-9" dy="0.32em">−300k</text>
                             </g>
-                            <g class="tick" opacity="1" transform="translate(0,255.8845431537715)">
+                            <g class="tick" opacity="1" transform="translate(0,261.94110926649887)">
                                 <line stroke="currentColor" x2="-6"/>
                                 <text fill="currentColor" x="-9" dy="0.32em">−400k</text>
                             </g>
                         </g>
-                        <path d="M39,140.5L46.585,140.5L54.17,140.5L99.679,140.5L107.264,140.5L114.849,140.5L122.434,140.5L190.698,140.5L205.868,140.5L213.453,140.5L221.038,140.5L228.623,140.5L266.547,140.5L274.132,140.5L281.717,140.5L289.302,140.5L296.887,140.5L304.472,140.5L312.057,140.5L334.811,140.5L349.981,140.5L365.151,140.5L380.321,140.5L403.075,140.5L433.415,140.5L441,140.5L441,140.261L433.415,5L403.075,120.939L380.321,134.947L365.151,140.309L349.981,140.262L334.811,140.332L312.057,140.273L304.472,140.457L296.887,139.984L289.302,139.269L281.717,137.487L274.132,139.632L266.547,139.947L228.623,140.099L221.038,140.082L213.453,136.79L205.868,139.424L190.698,140.498L122.434,139.869L114.849,140.395L107.264,140.408L99.679,140.339L54.17,140.422L46.585,140.407L39,140.5Z" fill="rgb(63, 185, 80)"/>
-                        <path d="M39,140.5L46.585,140.5L54.17,140.5L99.679,140.5L107.264,140.5L114.849,140.5L122.434,140.5L190.698,140.5L205.868,140.5L213.453,140.5L221.038,140.5L228.623,140.5L266.547,140.5L274.132,140.5L281.717,140.5L289.302,140.5L296.887,140.5L304.472,140.5L312.057,140.5L334.811,140.5L349.981,140.5L365.151,140.5L380.321,140.5L403.075,140.5L433.415,140.5L441,140.5L441,140.623L433.415,140.534L403.075,140.501L380.321,140.507L365.151,140.5L349.981,140.501L334.811,140.524L312.057,140.542L304.472,140.516L296.887,140.795L289.302,141.036L281.717,140.534L274.132,140.681L266.547,140.783L228.623,140.654L221.038,140.595L213.453,140.613L205.868,140.576L190.698,140.501L122.434,140.802L114.849,140.509L107.264,140.501L99.679,140.502L54.17,140.522L46.585,140.502L39,140.5Z" fill="rgb(218, 54, 51)"/>
+                        <path d="M39,140.5L46.585,140.5L54.17,140.5L99.679,140.5L107.264,140.5L114.849,140.5L122.434,140.5L190.698,140.5L198.283,140.5L205.868,140.5L213.453,140.5L221.038,140.5L228.623,140.5L236.208,140.5L243.792,140.5L251.377,140.5L258.962,140.5L281.717,140.5L334.811,140.5L349.981,140.5L365.151,140.5L380.321,140.5L403.075,140.5L433.415,140.5L441,140.5L441,140.248L433.415,5L403.075,119.908L380.321,134.654L365.151,140.299L349.981,140.25L334.811,140.323L281.717,137.492L258.962,140.231L251.377,136.09L243.792,140.414L236.208,140.391L228.623,140.078L221.038,140.165L213.453,140.409L205.868,139.245L198.283,140.492L190.698,140.4L122.434,139.835L114.849,140.39L107.264,140.403L99.679,140.331L54.17,140.418L46.585,140.402L39,140.5Z" fill="rgb(63, 185, 80)"/>
+                        <path d="M39,140.5L46.585,140.5L54.17,140.5L99.679,140.5L107.264,140.5L114.849,140.5L122.434,140.5L190.698,140.5L198.283,140.5L205.868,140.5L213.453,140.5L221.038,140.5L228.623,140.5L236.208,140.5L243.792,140.5L251.377,140.5L258.962,140.5L281.717,140.5L334.811,140.5L349.981,140.5L365.151,140.5L380.321,140.5L403.075,140.5L433.415,140.5L441,140.5L441,140.63L433.415,140.5L403.075,140.501L380.321,140.507L365.151,140.5L349.981,140.501L334.811,140.525L281.717,140.501L258.962,140.609L251.377,140.506L243.792,140.502L236.208,140.5L228.623,140.662L221.038,140.541L213.453,140.5L205.868,140.58L198.283,140.503L190.698,140.503L122.434,140.818L114.849,140.51L107.264,140.501L99.679,140.502L54.17,140.523L46.585,140.502L39,140.5Z" fill="rgb(218, 54, 51)"/>
                     </svg>
                 </div>
             </section>
@@ -2952,7 +2952,7 @@ AI-on-edge enjoyer.</div>
                                             <path d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/>
                                             <path fill-rule="evenodd" d="M8 0a8 8 0 100 16A8 8 0 008 0zM1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0z"/>
                                         </svg>
-                                        594
+                                        595
                                     </div>
                                     <div>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
@@ -3272,7 +3272,7 @@ AI-on-edge enjoyer.</div>
             </section>
             <footer>
                 <span>These metrics do not include all private contributions</span>
-                <span>Last updated 28 Oct 2025, 13:30:18 (timezone Asia/Ho_Chi_Minh) with lowlighter/metrics@3.34.0</span>
+                <span>Last updated 28 Oct 2025, 14:19:08 (timezone Asia/Ho_Chi_Minh) with lowlighter/metrics@3.34.0</span>
             </footer>
         </div>
         <div xmlns="http://www.w3.org/1999/xhtml" id="metrics-end"></div>
